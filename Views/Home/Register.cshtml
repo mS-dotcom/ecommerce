@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Bolsa De Papel Personalizada";
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+}
+<!-- ======================================================================
+                                      START CONTENT
+      ======================================================================= -->
+<form method="post" action="/Home/Register">
+    <div class="content">
+        <div class="container">
+            <div class="site-title"><div class="site-inside"><span>Register</span></div></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="forms-separation">
+                        <div class="login-form-box">
+                            <form class="login-form">
+                                <h3>Register</h3>
+                                <p>Name</p>
+                                <input type="text" name="Adi" class="login-line">
+                                <p>Surname</p>
+                                <input type="text" name="Soyadi" class="login-line">
+                                <p>E-Mail</p>
+                                <input type="text" name="EMail" class="login-line">
+                                <p>Phone Number</p>
+                                <input type="text" name="Telefon" class="login-line">
+                                <p>Address Name</p>
+                                <input type="text" name="madresadi" class="login-line" />
+                                <p>Address</p>
+                                <input type="text" name="madres" class="login-line" />
+                                <p>Username</p>
+                                <input type="text" name="username" class="login-line">
+                                <p>Password</p>
+                                <input type="password" name="password" class="login-line">
+                                <center><input style="border-radius:20px;" class="button-4" type="submit" value="Register" /></center>
+                                <br />
+                                <center><b><i style="color:red;">@ViewBag.Hata</i></b></center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- ======================================================================
+                                END CONTENT
+======================================================================= -->

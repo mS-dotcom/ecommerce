@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "SiparisDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br /><br /><br />
+@model IEnumerable<BolsaDePapel.Models.GecmisSatis>
+
+<h2>Sipariş Detay</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Ürün Adı</th>
+                        <th scope="col">Ürün Adedi</th>
+                        <th scope="col">Toplam Tutar</th>
+                        <th scope="col">Ürün Resmi</th>
+                        <th scope="col">Müşterinin Tasarımı</th>
+                        <th scope="col">Sipariş Durumu</th>
+                        <th scope="col">Açıklama</th>
+                        <th scope="col">Sipariş Durumu ve Açıklamayı Değiştir</th>
+                        <th scope="col">Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <th scope="row">@item.Urun.Adi</th>
+                            <td>@item.Adet</td>
+                            <td>@item.ToplamTutar</td>
+                            <td><img style="max-height:250px;max-width:250px;" src="~/Content/Resim/@item.Urun.Resim.Where(x=>x.UrunID==item.UrunID).FirstOrDefault().OrtaYol" /></td>
+                            <td><img style="max-height:250px;max-width:250px;" src="~/Content/Resim/MusteriTasarim/@item.ResimYol" /></td>
+                            <form action="/Admin/SiparisDurumDegistir" method="post">
+                                <input type="hidden" name="ID" value="@item.SatisID" />
+                                <td><input type="text" name="SiparisDurum" value="@ViewBag.SiparisDurum" /></td>
+                                <td><input type="text" name="Aciklama" value="@ViewBag.Aciklama" /></td>
+                                <td><input type="submit" value="Sipariş Durumunu Değiştir" class="btn btn-primary" /></td>
+                            </form>
+                            <td><a class="delete" href="/Admin/SiparisDetaySil/@item.ID"><i class="icon-trash"></i></a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

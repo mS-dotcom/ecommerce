@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Bolsa De Papel Personalizada";
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+}
+@model IEnumerable<BolsaDePapel.Models.Resim>
+<!-- =====================================================================
+                                             START THE SLIDER
+            ====================================================================== -->
+<div class="container">
+    <div class="the-slider" data-tesla-plugin="slider" data-tesla-item=".slide" data-tesla-next=".slide-right" data-tesla-prev=".slide-left" data-tesla-container=".slide-wrapper">
+        <div class="slide-arrows">
+            <div class="slide-left"></div>
+            <div class="slide-right"></div>
+        </div>
+        <ul class="slide-wrapper">
+            @foreach (var slider in ViewBag.Slider)
+            {
+                string s = slider.OrtaYol;
+                <li class="slide"><img src="~/Content/Resim/Slider/@slider.OrtaYol" alt="@slider.Aciklama"></li>
+            }
+
+        </ul>
+        <ul class="the-bullets-dots" data-tesla-plugin="bullets">
+            @foreach (var slider in ViewBag.Slider)
+            {
+                <li><span></span></li>
+            }
+        </ul>
+    </div>
+</div>
+<!-- =====================================================================
+                                 END THE SLIDER
+====================================================================== -->
+<!-- =====================================================================
+                                             START SERVICES
+            ====================================================================== -->
+
+@*<div class="box">
+    <div class="container">
+        <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
+            <div class="site-title">
+                <ul class="wrapper-arrows">
+                    <li><i class="icon-517 prev" title="left arrow"></i></li>
+                    <li><i class="icon-501 next" title="right arrow"></i></li>
+                </ul>
+                <div class="site-inside">
+                    <span>Services</span>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="tesla-carousel-items">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="service-1">
+                            <h4>La más barata</h4>
+                            <i class="icon-374" title="shipping"></i>
+                            <div class="service-description">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="service-1 service-color-2">
+                            <h4>Hacemos Cualquier modelo</h4>
+                            <i class="icon-260" title="cash"></i>
+                            <div class="service-description">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="service-1 service-color-1">
+                            <h4>La más rápida</h4>
+                            <i class="icon-271" title="time"></i>
+                            <div class="service-description">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+<!-- =====================================================================
+                                 END SERVICES
+====================================================================== -->
+
+<div style="margin-bottom:30px;font-family:'Comic Sans MS'" class="col-md-12">
+    <center>
+        <b>
+            <p style="font-family:'Times New Roman', Times, serif;">
+                Ingrese al producto que prefiera, cargue el patrón que desee y pídalo. <br />
+                Después de completar su pedido, deposite el monto total en nuestra cuenta bancaria. <br />
+                Nuestro equipo técnico lo contactará o si lo desea, puede comunicarse con nosotros desde nuestra línea de WhatsApp 24/7. <br />
+            </p>
+        </b>
+
+    </center>
+</div>
+<div class="box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="adds-2">
+                    <a href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
+        <div class="site-title">
+            <ul class="wrapper-arrows">
+                <li><i class="icon-517 prev" title="left arrow"></i></li>
+                <li><i class="icon-501 next" title="right arrow"></i></li>
+            </ul>
+            <div class="site-inside">
+                <span>Productos</span>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var urun in ViewBag.Urunler)
+            {
+                <div class="col-md-3 col-xs-6">
+                    <div class="product">
+                        <div class="product-cover">
+                            <div class="product-cover-hover"><span><a href="/Home/Product/@urun.ID">View</a></span></div>
+                            <img style="height:238px;width:258px;" src="~/Content/Resim/@Model.Where(x => x.UrunID == urun.ID).FirstOrDefault().OrtaYol" alt="@urun.Adi" />
+                        </div>
+                        <div class="product-details">
+                            <h1 style="background-color:#13a35d;font-family:'Times New Roman', Times, serif;"><a href="/Home/Product/@urun.ID">@urun.Adi</a></h1>
+                            <p style="background-color:#13a35d;font-family:'Times New Roman', Times, serif;">@urun.Aciklama</p>
+                            <div style="background-color:#13a35d;" class="product-price">
+                                <a href="/Home/Product/@urun.ID"><i class="icon-257" title="add to cart"></i></a>
+                                @Convert.ToInt32(urun.SatisFiyat) € + IVA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+        </div>
+<!-- ======================================================================
+                                END CONTENT
+======================================================================= -->

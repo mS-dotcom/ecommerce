@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Bolsa De Papel Personalizada";
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+}
+
+@model IEnumerable<BolsaDePapel.Models.Sepet>
+<!-- ======================================================================
+                                        START CONTENT
+        ======================================================================= -->
+<div class="content">
+    <div class="container">
+        <h2>Shopping cart</h2>
+
+        <div class="shopping-cart">
+            <div class="shopping-cart-products">
+                <ul class="shopping-product-detail">
+                    <li class="shopping-1">Product image</li>
+                    <li class="shopping-1">Your Design</li>
+                    <li class="shopping-2"><center>Product name</center></li>
+                    <li class="shopping-4"><center>Quantity</center></li>
+                    <li class="shopping-5">Unit price</li>
+                    <li class="shopping-6"><center>Total</center></li>
+                </ul>
+
+                <!-- REPEAT BY PRODUCT -->
+                @{
+                    int totalprice = 0;
+                }
+                @foreach (var item in Model)
+                {
+                    var resimyol = item.Urun.Resim.FirstOrDefault();
+                    totalprice += item.ToplamTutar;
+                    <ul class="shopping-product-detail">
+                        <li class="shopping-1">
+                            <img src="/Content/Resim/@resimyol.OrtaYol" alt="@item.Urun.Aciklama" />
+                        </li>
+                        <li class="shopping-2">
+                            @if (item.ResimYol != null)
+                            {
+                                <img src="~/Content/Resim/MusteriTasarim/@item.ResimYol" alt="@item.Urun.Aciklama" />
+                            }
+                        </li>
+                        <li class="shopping-3">
+                            <a href="#">@item.Urun.Adi</a>
+                            <br />
+                            @item.Urun.Aciklama
+                        </li>
+                        <li class="shopping-4">
+                            <p>@item.Adet</p>
+
+                        </li>
+                        <li class="shopping-5">
+                            € @item.Urun.SatisFiyat
+                        </li>
+                        <li class="shopping-6">
+                            € @item.ToplamTutar<a href="/Home/SepettenSil/@item.ID"><button>X</button></a>
+                        </li>
+
+                    </ul>
+                }
+
+                <!-- REPEAT BY PRODUCT -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="/Home/Index" class="button-7">Continue shopping</a>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="checkout-total">
+                        <p>Ürünlerin Toplamı :€ @totalprice </p>
+                        <hr />
+                        <p>Total : € @totalprice</p>
+                        <a href="/Home/SatisGerceklestir/@Session["MusteriID"]" class="button-6">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================================================================
+                                END CONTENT
+======================================================================= -->

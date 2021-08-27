@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Bolsa De Papel Personalizada";
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+}
+@model IEnumerable<BolsaDePapel.Models.GecmisSatis>
+<form method="get">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ürün Fotoğrafı</th>
+                            <th scope="col">Desen Fotoğrafı</th>
+                            <th scope="col">Ürün Adı</th>
+                            <th scope="col">Ürün Bireysel Fiyatı</th>
+                            <th scope="col">Ürün Adedi</th>
+                            <th scope="col">Toplam Tutar</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+
+                                <td><img style="max-height:250px;max-width:250px;" src="~/Content/Resim/@item.Urun.Resim.Where(x => x.UrunID == item.UrunID).FirstOrDefault().OrtaYol" /></td>
+                                <td><img style="max-height:250px;max-width:250px;" src="~/Content/Resim/MusteriTasarim/@item.ResimYol" /></td>
+                                <th scope="row">@item.Urun.Adi</th>
+                                <td>@item.Urun.SatisFiyat</td>
+                                <td>@item.Adet</td>
+                                <td>@item.ToplamTutar</td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "UrunResimEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model IEnumerable<BolsaDePapel.Models.Urun>
+<br /><br /><br />
+<h2>Ürün Resim Ekle</h2>
+
+<section class="panel">
+
+    <header class="panel-heading">
+        Ürün Resim Ekle
+    </header>
+    <div class="panel-body">
+        <div class="adv-table editable-table ">
+            <form enctype="multipart/form-data" method="post" action="/Admin/UrunResimEkle">
+                <div class="space15"></div>
+                <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                    <thead>
+                        <tr>
+                            <td>Ürün Listesi</td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-lg-3">
+                                        <select name="ID" class="form-control m-bot15">
+                                            @foreach (var urun in Model)
+                                            {
+                                                <option value="@urun.ID">@urun.Adi</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Varsayılan Resim Olsun Mu?</td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-lg-3">
+                                        <select name="Varsayilan" class="form-control m-bot15">
+                                            <option value="true">Evet</option>
+                                            <option value="false">Hayır</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resim Açıklaması</td>
+                            <td><input type="text" id="Aciklama" name="Aciklama" /></td>
+                        </tr>
+                        <tr>
+                            <td>Fotoğraf Seç</td>
+                            <td><input name="file" type="file" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Gönder" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</section>

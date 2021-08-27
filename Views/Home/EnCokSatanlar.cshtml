@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Bolsa De Papel Personalizada";
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+}
+@model IEnumerable<BolsaDePapel.Models.GecmisSatis>
+
+<br /><br /><br />
+
+<div class="container">
+    <div class="tesla-carousel" data-tesla-plugin="carousel" data-tesla-container=".tesla-carousel-items" data-tesla-item=">div" data-tesla-autoplay="false" data-tesla-rotate="false">
+        <div class="site-title">
+            <ul class="wrapper-arrows">
+                <li><i class="icon-517 prev" title="left arrow"></i></li>
+                <li><i class="icon-501 next" title="right arrow"></i></li>
+            </ul>
+            <div class="site-inside">
+                <span>Productos</span>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var urun in Model)
+            {
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="product>
+                        <div class="product-cover">
+                            <div class="product-cover-hover"><span><a href="/Home/Product/@urun.Urun.ID">View</a></span></div>
+                            @*<img style="height:258px;width:258px;" src="~/Content/Resim/@ViewBag.Resimler.Where(x => x.UrunID == urun.Urun.ID).FirstOrDefault().OrtaYol" alt="@urun.Urun.Adi" />*@
+                        </div>
+                        <div class="product-details">
+                            <h1><a href="/Home/Product/@urun.Urun.ID">@urun.Urun.Adi</a></h1>
+                            <p>@urun.Urun.Aciklama</p>
+                            <div class="product-price">
+                                <a href="/Home/Product/@urun.Urun.ID"><i class="icon-257" title="add to cart"></i></a>
+                                @urun.Urun.SatisFiyat €
+                            </div>
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+</div>

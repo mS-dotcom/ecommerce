@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Bolsa De Papel Personalizada";
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+}
+<!-- ======================================================================
+                                      START CONTENT
+      ======================================================================= -->
+<form method="post" action="/Home/Login">
+    <div class="content">
+        <div class="container">
+            <div class="site-title"><div class="site-inside"><span>Login</span></div></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="forms-separation">
+                        <div class="login-form-box">
+                            <form class="login-form">
+                                <h3>Login</h3>
+                                <p>Username</p>
+                                <input type="text" name="username" class="login-line">
+                                <p>Password</p>
+                                <input type="password" name="password" class="login-line">
+                                <center><input style="border-radius:20px;" type="submit" value="Login" class="button-4"><a style="margin-left:3px;border-radius:20px;" class="button-4" href="/Home/Register">REGISTER</a></center>
+                                <br />
+                                <center><b><i style="color:red;">@ViewBag.Hata</i></b></center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- ======================================================================
+                                END CONTENT
+======================================================================= -->

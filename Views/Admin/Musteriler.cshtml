@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Musteriler";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model IEnumerable<BolsaDePapel.Models.Musteri>
+<br /><br /><br /><br />
+<h2>Müşteriler</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Müşteri Adı</th>
+                        <th scope="col">Müşteri E-Mail</th>
+                        <th scope="col">Telefon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <th scope="row">@item.Adi @item.Soyadi</th>
+                            <td>@item.EMail</td>
+                            <td>@item.Telefon</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

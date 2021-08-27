@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "KategoriEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model IEnumerable<BolsaDePapel.Models.Resim>
+
+<h2>KategoriEkle</h2>
+
+<br /><br /><br /><br />
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Kategori Ekle
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" method="post" action="/Admin/KategoriEkle">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Kategori Adı</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="Adi">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Açıklama</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="Aciklama">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Kategori Resmi</label>
+                        <div class="col-sm-10">
+                            <select name="ResimID" class="form-control m-bot15">
+                                @foreach (var resimler in Model)
+                                {
+                                    <option style="color:black;" value="@resimler.Id">@resimler.Aciklama</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-danger" type="submit">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

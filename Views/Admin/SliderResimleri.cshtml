@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Slider Resimleri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model IEnumerable<BolsaDePapel.Models.Resim>
+<br /><br /><br />
+<h2>Slider Resimleri</h2>
+
+<section class="panel">
+    <header class="panel-heading">
+        Slider Resimleri
+    </header>
+    <div class="panel-body">
+        <div class="adv-table editable-table ">
+            <br />
+            <div class="clearfix">
+                <div class="btn-group">
+                    <a href="/Admin/SliderResimEkle" class="btn btn-success">
+                        Yeni Slider Resmi<i class="icon-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <br />
+            <div class="space15"></div>
+            <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Yol</th>
+                        <th>Açıklama</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var slider in Model)
+                    {
+                        <tr class="">
+                            <td>@slider.Id</td>
+                            <td>@slider.OrtaYol</td>
+                            <td>@slider.Aciklama</td>
+                            <td><a class="delete" href="/Admin/SliderResimSil/@slider.Id"><i class="icon-trash"></i></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+
+
+
